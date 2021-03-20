@@ -5,17 +5,15 @@ type props={
    history:any,
    location:any,
    match:any,
-   onToggle: () => void
- }
-const Students:React.FunctionComponent<props>=({history,location,match, onToggle})=>{
+   onToggle:()=>void
+}
+const Broadcast:React.FunctionComponent<props>=({history,location,match,onToggle})=>{
   return(
-    <section id="students">
+    <section id="broadcast">
        <SideMenu onToggle={onToggle}/>
-        <h1>Students</h1>   
+       <h1>Brodcast</h1>
     </section>
-
-  )
+  ) 
 }
 
-export default Students;
-
+export default Broadcast;

@@ -1,8 +1,18 @@
 import * as React from 'react';
+import SideMenu from '../components/SideMenu';
 
-const Subscription=()=>{
+type props={
+   history:any,
+   location:any,
+   match:any,
+   onToggle:()=>void 
+}
+const Subscription:React.FunctionComponent<props>=({history,location,match,onToggle})=>{
   return(
-   <h1>Subscription</h1>
+  <section id="subscription">
+     <SideMenu onToggle={onToggle}/>
+     <h1>Subscription</h1>
+  </section>
   ) 
 }
 

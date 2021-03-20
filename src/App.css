@@ -1,0 +1,200 @@
+*{
+  color: red;
+}
+body{
+ color: red;
+ text-align: center; 
+}
+
+#btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 2.1%;
+  left: 1.2%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  background: rgb(2, 7, 73);
+  border-radius: 50%;
+  border: none;
+  outline: none;
+}
+#btn span {
+  position: absolute;
+  width: 15px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  background: #ffffff;
+  border-radius: 2px;
+  overflow: hidden;
+  transition: all 0.3s linear;
+}
+#btn span::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: gray;
+  transition: all 0.3s linear;
+}
+#btn span:nth-child(1) {
+  animation: span-first-off 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+#btn span:nth-child(2) {
+  animation: span-second-off 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+#btn span:nth-child(3) {
+  animation: span-third-off 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+#btn.on:hover span::before {
+  width: 100%;
+  transition: all 0.3s linear;
+}
+#btn.on span:nth-child(1) {
+  animation: span-first-on 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+#btn.on span:nth-child(2) {
+  animation: span-second-on 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+#btn.on span:nth-child(3) {
+  animation: span-third-on 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes span-first-on {
+  0% {
+    transform: translate(-50%, -300%);
+  }
+  30% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+@keyframes span-first-off {
+  0% {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  30% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -300%);
+  }
+}
+@keyframes span-second-on {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  25% {
+    background: gray;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-150%, -50%) scale(0);
+  }
+}
+@keyframes span-second-off {
+  0% {
+    transform: translate(-150%, -50%) scale(0);
+  }
+  25% {
+    background: gray;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes span-third-on {
+  0% {
+    transform: translate(-50%, 200%);
+  }
+  30% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+@keyframes span-third-off {
+  0% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  30% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, 200%);
+  }
+}
+/* Section Form css */
+.form_container{
+ text-align: left;
+ width: 100%;
+ max-width: 70%;
+ margin: 0 auto ;
+}
+/* Modal css */
+.backdrop{
+ width: 100vw;
+ height: 100vh;
+ background: rgba(0, 0, 0, 0.767); 
+ position: fixed;
+ top: 0;
+ left: 0; 
+ z-index: 99999; 
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.close_btn{
+ position: absolute;
+ width: 1em;
+ height: 1em;
+ top: 0; 
+ right: 0;
+}
+.close_btn img{
+ width: 100%;
+ height: 100%; 
+}
+.content_container{
+  overflow: scroll;
+  border-radius: 10px;
+}
+.content_container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.content_container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/* Add Button css */
+.add_button_container{
+  text-align: right;
+}
+/* list css */
+#table{
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+
+}
