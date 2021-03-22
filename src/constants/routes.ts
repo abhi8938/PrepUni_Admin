@@ -2,6 +2,7 @@ import Broadcast from "../screens/Broadcast";
 import Home from "../screens/Home";
 import Packages from "../screens/Packages";
 import Products from "../screens/Products";
+import Programs from "../screens/Program";
 import Students from "../screens/Students";
 import Subscription from "../screens/Subscriptions";
 
@@ -17,7 +18,8 @@ const routes=[
    label:"Product",
    component:Products,
    route:"/product"
-   },{
+   },
+   {
    id:2,
    label:"Students",
    route:"/student",
@@ -37,6 +39,11 @@ const routes=[
    label:"Broadcast",
    route:"/broadcast",
    component:Broadcast
+   },{
+   id:6,
+   label:"Programs",
+   route:"/programs",
+   component:Programs 
    } 
 ]
 
