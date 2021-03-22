@@ -4,6 +4,7 @@ import Packages from "../screens/Packages";
 import Products from "../screens/Products";
 import Students from "../screens/Students";
 import Subscription from "../screens/Subscriptions";
+import University from "../screens/University"
 
 const routes=[
     {
@@ -37,7 +38,13 @@ const routes=[
    label:"Broadcast",
    route:"/broadcast",
    component:Broadcast
-   } 
+   },{
+    id:6,
+    label:"University",
+    route:"/university",
+    component:University
+    } 
+   
 ]
 
 export default routes;
