@@ -1,6 +1,21 @@
 
  const  GenerateTemplate=()=>{
      //TODO: Upload file to server, get link in response , create product using link
+
+     const UNIVERSITY = {
+       name:{
+          value:'' ,
+        type:"text",
+        active:false,
+        error:'' 
+       },
+       logo:{
+          value:'' ,
+        type:"file",
+        active:false,
+        error:'' 
+       }
+     }
     const PRODUCT={
       name:{
         value:'' ,
@@ -24,7 +39,8 @@
         value:'' ,
         type:"dropdown",
         active:false,
-        error:'' 
+        error:'',
+        list:["sample1 ",'sdasdasd'] 
         },
         subject:{
         value:'' ,
@@ -45,6 +61,7 @@
         error:'' 
       }
    }
+
    const PROGRAM={
       name:{
        value:"",
@@ -66,7 +83,7 @@
        error:"" 
       }
    }
-   return {PRODUCT,PROGRAM}
+   return {PRODUCT,PROGRAM, UNIVERSITY}
 }
 
 export default GenerateTemplate;

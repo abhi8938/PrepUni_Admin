@@ -1,7 +1,8 @@
 import GenerateTemplate from "../constants/template";
-import { useState } from "react";
+import {URL} from "../constants/url";
 import axios from "axios";
-
+import { useState } from "react";
+import Request from "../services/Request";
 
 const UseProductStore=()=>{
    const {PRODUCT} = GenerateTemplate();
@@ -12,15 +13,7 @@ const UseProductStore=()=>{
    const [productLoading,setProductLoading]=useState(false);
 
    const HandleProduct = (key:string, key1:string,value:any) => {
-       let currentProduct:any = {
-           name:product.name,
-           link:product.link,
-           cover:product.cover,
-           course:product.course,
-           subject:product.subject,
-           semester:product.semester ,
-           university:product.university 
-       }
+       let currentProduct:any = {...product}
        currentProduct[key][key1] = value
        setProduct(currentProduct);    
    }
@@ -109,6 +102,7 @@ const UseProductStore=()=>{
    // create one product
    const createProducts = async (e:any) => {
     e.preventDefault()
+    const {putData} = Request();
     console.log("product",product); 
     const productData=new FormData();
     productData.append('link',product.link.value);
@@ -118,35 +112,27 @@ const UseProductStore=()=>{
     productData.append('subject',product.subject.value);
     productData.append('university',product.university.value);
     productData.append('cover',product.cover.value);
-   try{
-    const headers:any = {
-      'Content-Type': 'application/json',
-      "x-auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDNhNGI3MTg2YmM1MjFhZTg0M2Q5M2IiLCJpYXQiOjE2MTQ0MzMxMzd9.MBMhCLm6QYmfTnzgxGQzpA4vUZiyHdLD5Tr278eqOuY"
-    }; 
-    const res= await axios.post('http://localhost:3002/api/paper_products',productData,{headers});
-    console.log(res.data);
-    alert("SUCCESFULLY SUBMITED");
-    setIsOpenModal(false)
-    }catch(e){
-    alert(e)
-      }
+
+    try{
+      await putData('/paper_products',productData)
+      alert("SUCCESFULLY SUBMITED");
+      setIsOpenModal(false);
+    }
+    catch(e){
+      alert(e)
+    }
    } 
   //  get the list of the Product
    const getProducts = async() => {
-     
+    const {fetchData} = Request();
     setProductLoading(true);
-     try{
-       const headers:any={
-         "x-auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDNhNGI3MTg2YmM1MjFhZTg0M2Q5M2IiLCJpYXQiOjE2MTQ0MzMxMzd9.MBMhCLm6QYmfTnzgxGQzpA4vUZiyHdLD5Tr278eqOuY"
-       }
-       const res=await axios.get('http://localhost:3002/api/paper_products/',{headers});
-       setList(res.data);
-       console.log("PRODUCTS",res);
-       setProductLoading(false)
-      }catch(e){
-       setProductLoading(false) 
-       alert(e);
-      }
+    try{
+      let data = await fetchData('/paper_products');
+      setList(data)
+    }catch(e){
+      alert(e)
+    }
+    setProductLoading(false);
    } //async
 
    return {
