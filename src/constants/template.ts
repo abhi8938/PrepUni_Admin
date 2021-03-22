@@ -61,6 +61,29 @@
         error:'' 
       }
    }
-   return {PRODUCT, UNIVERSITY}
+
+   const PROGRAM={
+      name:{
+       value:"",
+       type:"text",
+       active:false,
+       error:""
+      },
+      university_id:{
+       value:"",
+       type:"dropdown", 
+       active:false,
+       error:"",
+       list:['203','403','504'] 
+      },
+      semester:{
+       value:"",
+       type:"text",
+       active:false,
+       error:"" 
+      }
+   }
+   return {PRODUCT,PROGRAM, UNIVERSITY}
 }
+
 export default GenerateTemplate;

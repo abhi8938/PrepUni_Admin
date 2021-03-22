@@ -23,10 +23,13 @@ const Form:React.FunctionComponent<props>=({item,handleChange,onSubmit})=>{
       if(value.type==="text") allForms.push ( <div className="form-group"> <label>{key}</label> <input type={value.type} value={value.value} onChange={(e)=>handleChange(key,'value',e.target.value)} className="form-control"/> </div>)
     //  when input type dropdown render this.. 
       if(value.type==='dropdown') allForms.push( <><label>{key}</label> <select className="form-select mt-3 mb-2" aria-label="Default select example" onChange={(e)=>handleChange(key,'value',e.target.value)}>
-         <option selected>zero</option>
-         <option value="1">One</option>
-         <option value="2">Two</option>
-         <option value="3">Three</option>
+      {/* making the dropdown list  */}
+         {  value.list.map((item:any,i:any)=>{
+            return(
+                <option  selected={i===0 && true} >{item}</option>
+            )
+          })
+        }
        </select></>)
     // when input type file render this
      if(value.type==="file") allForms.push(
